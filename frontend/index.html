@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional sensing</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://kit.fontawesome.com/1e76b598b4.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <h2>Proyecto final  Computación Efectiva</h2>
+    <h3>Este es un tablero que presenta información acerca del estado emocional del usuario.</h3>
+    <p>El tablero se divide en 3 partes: 1) Señales de PPG 2) Reconocimiento facial 3) Análisis de valencia y estimulación</p>
+
+    <div style="display:flex">
+        <div style="width: 50%">
+            <h3>1) Señal de Fotopletismografía.</h3>
+        
+            <p>En la fotopletismografía se aproxima el volumen de un cuerpo determinando la cantidad de luz que este refleja.</p>
+            <p>Los peaks de voltaje están directamente relacionados con los latidos del corazón. Considerar que esta lectura es afectada por otros factores.</p>
+            <p>Tiene un pulso cardíaco (Heart Rate, pulsaciones por minuto) de: <strong id="heartrate_ppg"></strong> y tiene una variación en su pulso (Heart Rate Variation, HRV) de <strong id="hrv_ppg"></strong></p>
+            <p>En base a estos datos, usted debe sentirse: <strong id="emotion_recognized_ppg" style="color: red;"></strong></p>
+            <div data-v-409fe714="" class="chart-view">
+                <canvas id="PPG_monitor" style="display: inline-block; box-sizing: border-box; height: 100px; width: 300px;"></canvas>
+            </div>
+        </div>
+    
+        <div style="width: 50%">
+            <h3>3) Si se relaciona la frecuencia cardíaca con la estimulación (arousal), y la emoción obtenida con reconocimiento facial relacionada con la valencia (valence). En un futuro, con esto se pueden armar emociones más complejas (ver mapa emocional de abajo)</h3>
+        
+            <p>Valencia: 
+                <i class="fa-solid fa-heart-crack" id="valence_1">Disgustado</i>
+                <i class="fa-solid fa-face-meh" id="valence_2">Neutral</i>
+                <i class="fa-solid fa-heart" id="valence_3">Encantado</i></p>
+            <p>Estimulación: 
+                <i class="fa-solid fa-bed" id="arousal_1">En reposo</i>
+                <i class="fa-solid fa-face-smile" id="arousal_2">Tranquilo</i>
+                <i class="fa-solid fa-person-harassing" id="arousal_3">Estresado</i>
+            </p>
+
+            <img src="/frontend/assets/Mapping-of-the-discrete-emotion-labels-on-the-valence-arousal-plane-horizontal.png" alt="">
+            
+        </div>
+        
+    </div>
+
+    <div style="display:flex">
+        <div style="width: 50%">
+            <h3>2) ¡Sáquese una foto y adivinaremos como se siente!</h3>
+            <button id="captureButton" style="display: flex;">Sacar Foto</button>
+            <video id="video" width="640" height="480" autoplay></video>
+            <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+        </div>
+        <div style="width: 50%">
+            <h3>Su última foto es:</h3>
+            <p >Su score es de <strong id="emotion_score_camera"></strong></p> <p >Su emoción parece ser: <strong id="emotion_recognized_camera"></strong></p>
+            <!-- <img id="pic_with_emotion" width="640" height="480" src="../generated_images/predicted_test_image.png"></img> -->
+            <img id="pic_with_emotion" width="640" height="480" src="../generated_images/predicted_test_image.png"></img>
+        </div>
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="/frontend/main.js"></script>
+
+</body>
+</html>

@@ -13,8 +13,10 @@ from utils.inference import load_detection_model
 from utils.preprocessor import preprocess_input
 
 # parameters for loading data and images
-detection_model_path = '../trained_models/detection_models/haarcascade_frontalface_default.xml'
-emotion_model_path = '../trained_models/emotion_models/fer2013_mini_XCEPTION.102-0.66.hdf5'
+#detection_model_path = '../trained_models/detection_models/haarcascade_frontalface_default.xml'
+detection_model_path = 'face_classification/trained_models/detection_models/haarcascade_frontalface_default.xml'
+# emotion_model_path = '../trained_models/emotion_models/fer2013_mini_XCEPTION.102-0.66.hdf5'
+emotion_model_path = 'face_classification/trained_models/emotion_models/fer2013_mini_XCEPTION.102-0.66.hdf5'
 emotion_labels = get_labels('fer2013')
 
 # hyper-parameters for bounding boxes shape
